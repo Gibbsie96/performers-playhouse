@@ -193,24 +193,23 @@ a { color: var(--pink); }
   max-width: 600px;
 }
 
-.hero__meta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 14px 28px;
-  margin-top: 36px;
-  font-weight: 600;
-  color: var(--navy);
+/* ----------  Banner image strips  ---------- */
+.banner {
+  margin: 0;
+  width: 100%;
+  overflow: hidden;
+  background: var(--navy);
+  line-height: 0;
 }
-.hero__meta li {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.65);
-  padding: 8px 18px;
-  border-radius: 999px;
-  backdrop-filter: blur(4px);
-  font-size: 0.95rem;
+.banner img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+@media (min-width: 768px) {
+  .banner img { height: 460px; }
 }
 
 /* ----------  Pillars  ---------- */
@@ -305,8 +304,8 @@ a { color: var(--pink); }
   text-align: center;
 }
 .meet__photo {
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
   margin: 0 auto;
   background: linear-gradient(135deg, var(--pink) 0%, var(--gold) 100%);
@@ -316,12 +315,13 @@ a { color: var(--pink); }
   box-shadow: var(--shadow-lg);
   border: 6px solid #fff;
   outline: 3px solid var(--gold);
+  overflow: hidden;
 }
-.meet__initials {
-  font-family: var(--font-script);
-  color: #fff;
-  font-size: 6rem;
-  line-height: 1;
+.meet__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .meet__hello {
   font-family: var(--font-script);
