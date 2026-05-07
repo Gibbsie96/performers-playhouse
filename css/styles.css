@@ -452,7 +452,9 @@ a { color: var(--pink); }
 }
 .footer p { margin: 0; }
 
-/* ----------  Sticky CTA (mobile bottom-center, desktop bottom-right)  ---------- */
+/* ----------  Sticky CTA (mobile bottom-center, desktop bottom-right)
+   Hidden by default at every viewport; JS toggles .is-visible based on
+   whether the hero and Camp Details form buttons are off-screen. */
 .sticky-cta {
   position: fixed;
   left: 50%;
@@ -468,6 +470,13 @@ a { color: var(--pink); }
   z-index: 50;
   font-size: 0.95rem;
   letter-spacing: 0.02em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.sticky-cta.is-visible {
+  opacity: 1;
+  pointer-events: auto;
 }
 .sticky-cta:hover {
   background: var(--pink-deep);
@@ -497,21 +506,13 @@ a { color: var(--pink); }
   body { font-size: 18px; }
   .section { padding: 96px 0; }
 
-  /* Desktop: anchor the sticky CTA to the bottom-right and keep it
-     hidden until the top banner has scrolled out of view (JS toggles
-     the .is-visible class). Avoids colliding with the scroll cue. */
+  /* Desktop: anchor the sticky CTA to the bottom-right (visibility
+     toggle is shared with mobile, see base .sticky-cta rule). */
   .sticky-cta {
     left: auto;
     right: 24px;
     bottom: 24px;
     transform: none;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-  }
-  .sticky-cta.is-visible {
-    opacity: 1;
-    pointer-events: auto;
   }
 }
 
