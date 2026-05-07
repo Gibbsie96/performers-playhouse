@@ -452,7 +452,7 @@ a { color: var(--pink); }
 }
 .footer p { margin: 0; }
 
-/* ----------  Sticky mobile CTA  ---------- */
+/* ----------  Sticky CTA (mobile bottom-center, desktop bottom-right)  ---------- */
 .sticky-cta {
   position: fixed;
   left: 50%;
@@ -486,11 +486,33 @@ a { color: var(--pink); }
   .facts { grid-template-columns: 1fr 1fr; }
 }
 
+@media (max-width: 767px) {
+  /* Mobile: skip the top banner and its scroll cue; the hero leads
+     straight into Meet Nicole. The sticky CTA below stays visible. */
+  .banner--top,
+  .scroll-cue { display: none; }
+}
+
 @media (min-width: 768px) {
   body { font-size: 18px; }
   .section { padding: 96px 0; }
-  /* Hide sticky CTA on desktop, header CTA is right there */
-  .sticky-cta { display: none; }
+
+  /* Desktop: anchor the sticky CTA to the bottom-right and keep it
+     hidden until the top banner has scrolled out of view (JS toggles
+     the .is-visible class). Avoids colliding with the scroll cue. */
+  .sticky-cta {
+    left: auto;
+    right: 24px;
+    bottom: 24px;
+    transform: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .sticky-cta.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
