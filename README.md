@@ -20,5 +20,5 @@ npx serve .
 
 1. Push to `main`.
 2. In the GitHub repo: **Settings → Pages → Source = "Deploy from a branch", Branch = `main`, Folder = `/ (root)`** → Save.
-3. Wait ~1 minute. Site lives at `https://gibbsie96.github.io/performers-playhouse/`.
+3. Wait ~1 minute. Site lives at the configured custom domain (`performersplayhouse.com`); the GitHub Pages preview URL `https://gibbsie96.github.io/performers-playhouse/` redirects to it.
 4. (Optional) Add a custom domain via the **Custom domain** field. That creates/updates the `CNAME` file automatically.
