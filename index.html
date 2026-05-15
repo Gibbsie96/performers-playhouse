@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Performers Playhouse Summer Camps in Eastmark, Mesa: week-long music & theater workshops for kids ages 6–10 and 10–14. Voice training, acting, musical theater, ending with a live showcase. ESA reimbursable.">
+  <meta name="description" content="Sign up for Performers Playhouse summer camps in Eastmark, Mesa: week-long music & theater workshops for kids ages 6–14. Live Friday showcase. ESA reimbursable.">
   <meta name="theme-color" content="#1B2C5C">
 
-  <meta property="og:title" content="Performers Playhouse Summer Camps | Eastmark, Mesa">
-  <meta property="og:description" content="Week-long music & theater workshops for kids ages 6–10 and 10–14. Sing. Act. Shine. Small groups, big confidence, live showcase Friday.">
+  <meta property="og:title" content="Sign Up — Performers Playhouse Summer Camps">
+  <meta property="og:description" content="Week-long music & theater camps for kids 6–14. Sing. Act. Shine. Sign up for a week in June or July.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://performersplayhouse.com/">
   <meta property="og:image" content="https://performersplayhouse.com/images/group-stage.jpg">
@@ -17,7 +17,7 @@
 
   <link rel="canonical" href="https://performersplayhouse.com/">
 
-  <title>Performers Playhouse Summer Camps | Eastmark, Mesa</title>
+  <title>Sign Up — Performers Playhouse Summer Camps | Eastmark, Mesa</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,13 +59,24 @@
     },
     "offers": {
       "@type": "Offer",
-      "url": "https://forms.gle/cqDm49Jj2zcUdhnS6",
+      "url": "JOTFORM_URL_PLACEHOLDER",
       "availability": "https://schema.org/InStock"
     }
   }
   </script>
 </head>
-<body>
+<body data-page="home">
+
+  <nav class="site-nav" aria-label="Primary">
+    <div class="container site-nav__inner">
+      <a class="site-nav__brand" href="index.html">Performers Playhouse</a>
+      <ul class="site-nav__links">
+        <li><a href="index.html" data-nav="home">Home</a></li>
+        <li><a href="camps.html" data-nav="camps">Camps</a></li>
+        <li><a href="policies.html" data-nav="policies">Policies</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <header class="hero">
     <div class="container hero__inner">
@@ -76,10 +87,10 @@
       </div>
 
       <p class="hero__tagline">Sing. Act. Shine.</p>
-      <p class="hero__sub">A workshop experience to build confidence and have fun!</p>
+      <p class="hero__sub">Reserve your camper's spot for a week of voice, acting, and musical theater — ending with a live showcase Friday.</p>
 
-      <a class="btn btn--primary" href="https://forms.gle/cqDm49Jj2zcUdhnS6" target="_blank" rel="noopener">
-        Fill Out the Interest Form
+      <a class="btn btn--primary" href="JOTFORM_URL_PLACEHOLDER" target="_blank" rel="noopener" data-sticky-trigger>
+        Sign Up for a Camp
       </a>
     </div>
   </header>
@@ -164,8 +175,8 @@
         </ul>
 
         <div class="details__cta">
-          <a class="btn btn--primary btn--large" href="https://forms.gle/cqDm49Jj2zcUdhnS6" target="_blank" rel="noopener">
-            Fill Out the Interest Form
+          <a class="btn btn--primary btn--large" href="JOTFORM_URL_PLACEHOLDER" target="_blank" rel="noopener" data-sticky-trigger>
+            Sign Up for a Camp
           </a>
         </div>
       </div>
@@ -183,38 +194,9 @@
     </div>
   </footer>
 
-  <a class="sticky-cta" href="https://forms.gle/cqDm49Jj2zcUdhnS6" target="_blank" rel="noopener" aria-label="Fill out the interest form">Fill Out the Interest Form</a>
+  <a class="sticky-cta" href="JOTFORM_URL_PLACEHOLDER" target="_blank" rel="noopener" aria-label="Sign up for a Performers Playhouse camp">Sign Up for a Camp</a>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Show the sticky CTA only when BOTH the hero "Fill Out the Interest Form"
-    // button and the Camp Details "Fill Out the Interest Form" button are
-    // off-screen. Same logic on mobile and desktop.
-    (function () {
-      var heroCta = document.querySelector('.hero .btn--primary');
-      var detailsCta = document.querySelector('.details__cta .btn--primary');
-      var sticky = document.querySelector('.sticky-cta');
-      if (!sticky || !heroCta || !detailsCta || !('IntersectionObserver' in window)) return;
-
-      var heroVisible = true;       // hero CTA starts in view on load
-      var detailsVisible = false;   // details CTA starts below the fold
-
-      function update() {
-        sticky.classList.toggle('is-visible', !heroVisible && !detailsVisible);
-      }
-
-      new IntersectionObserver(function (entries) {
-        heroVisible = entries[0].isIntersecting;
-        update();
-      }, { threshold: 0 }).observe(heroCta);
-
-      new IntersectionObserver(function (entries) {
-        detailsVisible = entries[0].isIntersecting;
-        update();
-      }, { threshold: 0 }).observe(detailsCta);
-    })();
-  </script>
+  <script src="js/site.js" defer></script>
 
 </body>
 </html>

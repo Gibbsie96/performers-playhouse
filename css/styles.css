@@ -26,7 +26,7 @@
 
 /* ----------  Reset  ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -522,4 +522,308 @@ a { color: var(--pink); }
     animation: none !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ----------  Site nav  ---------- */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(250, 244, 230, 0.94);
+  backdrop-filter: saturate(160%) blur(8px);
+  -webkit-backdrop-filter: saturate(160%) blur(8px);
+  border-bottom: 1px solid rgba(27, 44, 92, 0.08);
+  box-shadow: 0 2px 14px rgba(27, 44, 92, 0.05);
+}
+.site-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.site-nav__brand {
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+  font-size: 1.1rem;
+  color: var(--navy);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-nav__brand:hover { color: var(--pink); }
+.site-nav__links {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.site-nav__links a {
+  font-family: var(--font-display);
+  letter-spacing: 0.1em;
+  font-size: 0.95rem;
+  color: var(--navy);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.site-nav__links a:hover { background: rgba(214, 54, 106, 0.1); color: var(--pink); }
+body[data-page="home"]     .site-nav__links a[data-nav="home"],
+body[data-page="camps"]    .site-nav__links a[data-nav="camps"],
+body[data-page="policies"] .site-nav__links a[data-nav="policies"] {
+  background: var(--pink);
+  color: #fff;
+}
+@media (max-width: 480px) {
+  .site-nav__inner { padding-top: 10px; padding-bottom: 10px; }
+  .site-nav__brand { font-size: 0.95rem; }
+  .site-nav__links a { font-size: 0.8rem; padding: 6px 10px; letter-spacing: 0.06em; }
+}
+
+/* ----------  Page header (Camps / Policies)  ---------- */
+.page-header {
+  position: relative;
+  background: linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
+  padding: 56px 0 48px;
+  text-align: center;
+  overflow: hidden;
+}
+.page-header::before,
+.page-header::after {
+  content: "";
+  position: absolute;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.35;
+  z-index: 0;
+}
+.page-header::before { background: var(--pink); top: -100px; left: -60px; }
+.page-header::after  { background: var(--gold); bottom: -100px; right: -60px; }
+.page-header > .container { position: relative; z-index: 1; }
+.page-header__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  letter-spacing: 0.04em;
+  color: var(--navy);
+  margin-bottom: 0.3em;
+}
+.page-header__lead {
+  max-width: 620px;
+  margin: 0 auto;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+/* ----------  Camp grid / cards  ---------- */
+.camps { background: var(--cream-deep); }
+.camp-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.camp-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: #fff;
+  padding: 28px 26px;
+  border-radius: var(--radius-lg);
+  border-left: 6px solid var(--gold);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.camp-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+.camp-card__week {
+  display: inline-block;
+  align-self: flex-start;
+  font-family: var(--font-display);
+  letter-spacing: 0.14em;
+  font-size: 1.15rem;
+  background: var(--navy);
+  color: var(--gold-soft);
+  padding: 9px 20px;
+  border-radius: 999px;
+}
+.camp-card__theme {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  font-size: 1.6rem;
+  color: var(--navy);
+  margin: 0;
+}
+.camp-card__facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 16px;
+  row-gap: 6px;
+  margin: 0;
+  font-size: 0.97rem;
+}
+.camp-card__facts dt {
+  font-family: var(--font-display);
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  color: var(--pink);
+}
+.camp-card__facts dd {
+  margin: 0;
+  color: var(--ink);
+}
+.camp-card__desc {
+  margin: 0;
+  color: var(--ink-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85em;
+}
+.camp-card__desc p {
+  margin: 0;
+  color: inherit;
+}
+.camp-card__desc strong {
+  color: var(--navy);
+}
+.camp-card .btn {
+  align-self: flex-start;
+  margin-top: auto;
+}
+.camp-card__note {
+  margin: auto 0 0;
+  padding-top: 4px;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+/* ----------  Page header: camps schedule  ---------- */
+.page-header__camps {
+  list-style: none;
+  padding: 0;
+  margin: 28px auto 0;
+  max-width: 720px;
+  display: grid;
+  gap: 10px;
+  text-align: left;
+}
+.page-header__camps li { padding: 0; }
+.page-header__camps a {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.55);
+  border-left: 4px solid var(--gold);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.page-header__camps a:hover,
+.page-header__camps a:focus-visible {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateX(3px);
+  box-shadow: var(--shadow-sm);
+  outline: none;
+}
+.page-header__date {
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+  font-size: 1.1rem;
+  color: var(--pink);
+  white-space: nowrap;
+}
+.page-header__time {
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+  font-size: 1rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.page-header__camp {
+  color: var(--navy);
+  font-weight: 600;
+}
+.page-header__age {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  margin-left: auto;
+}
+.page-header__note {
+  max-width: 600px;
+  margin: 14px auto 0;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* ----------  Page header facts (Camps page)  ---------- */
+.page-header__facts {
+  max-width: 720px;
+  margin: 28px auto 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  text-align: left;
+}
+.page-header__facts dt {
+  font-family: var(--font-display);
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+  color: var(--pink);
+  margin-bottom: 2px;
+}
+.page-header__facts dd {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1rem;
+}
+@media (min-width: 720px) {
+  .page-header__facts {
+    grid-template-columns: max-content 1fr;
+    column-gap: 24px;
+    row-gap: 12px;
+    align-items: baseline;
+  }
+  .page-header__facts dt { margin-bottom: 0; }
+}
+@media (min-width: 720px) {
+  .camp-grid { gap: 28px; }
+}
+
+/* ----------  Policies  ---------- */
+.policies-section { background: #fff; }
+.policies {
+  max-width: 760px;
+  margin: 0 auto;
+  display: grid;
+  gap: 36px;
+}
+.policy {
+  scroll-margin-top: 90px;
+}
+.policy h2 {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  font-size: 1.7rem;
+  color: var(--navy);
+  border-bottom: 3px solid var(--gold);
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+}
+.policy p {
+  color: var(--ink);
+  margin: 0;
+}
+.policy p + p {
+  margin-top: 0.9em;
 }
